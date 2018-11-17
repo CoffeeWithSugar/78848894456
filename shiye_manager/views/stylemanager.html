@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>师爷服装管理系统</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link href="icomoon/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="../css/alertify.core.css" />
+		<link href="../css/main.css" rel="stylesheet">
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/bootstrap.js"></script>
+		<script src="../js/jquery.scrollUp.js"></script>
+		<script src="../js/jquery.easy-pie-chart.js"></script>
+		<script src="../js/jquery.sparkline.js"></script>
+		<script src="../js/tiny-scrollbar.js"></script>
+		<script type="text/javascript" src="../js/alertify.min.js"></script>
+
+		<script type="text/javascript" src="js/stylemgr.js"></script>
+		<script>
+			$(function() {
+				//页面元素尺寸初始化；
+				stylemgr.initBodySize();
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="dashboard-wrapper" style="margin:0;padding: 0; height:100%;">
+			<!--<div class="left-sidebar" style="margin-right: 0;width: 100%;">
+				<div class="widget" style="margin-bottom: 2px;">
+					<div class="widget-header">
+						<div class="title">
+							浏览款号</div>
+					</div>
+				</div>-->
+			<div class="left-sidebar" style="margin-right: 0 ;">
+				<div class="row-fluid">
+					<div class="span3" style="margin: 0;">
+						<div class="widget" style="margin-bottom: 0;">
+							<div class="widget-header">
+								<div class="title">
+									款号列表
+								</div>
+								<span class="tools">
+                      					<a class="fs1" aria-hidden="true" data-icon="" data-original-title=""></a>
+                   					 </span>
+							</div>
+							<div class="widget-body" id="style-list" style="position: relative;">
+
+								<div class="navbar-inner" style="margin-bottom: 5px;">
+									<form class="navbar-form">
+										<div class="input-append">
+											<select id="stateAndCity" class="span5" style="margin-top: 0px;margin-right: 12px;;">
+
+												<option value="" selected="selected">
+													选择查询周期
+												</option>
+												<option value="all">
+													全部
+												</option>
+
+												<option value="last_week">
+													最近一周
+												</option>
+
+												<option value="last_month">
+													最近一个月
+												</option>
+												<option value="last_thres_month">
+													最近三个月
+												</option>
+
+												<option value="last_year">
+													最近一年
+												</option>
+											</select>
+											<input class="span5" id="style-keyword" type="text">
+											<button class="btn" type="button">
+				                           	   搜 索
+				                            </button>
+										</div>
+									</form>
+								</div>
+								<!-- 每页最多显示12条 -->
+								<div id="dt_example" class="example_alt_pagination" style="height: 100%;">
+									<div id="data-table_wrapper" class="dataTables_wrapper" role="grid" style="height: 100%;">
+										<div style="height: 86%;overflow: auto;">
+										<table class="table table-condensed table-striped table-hover table-bordered pull-left dataTable" id="data-table" aria-describedby="data-table_info" >
+
+											<thead>
+												<tr role="row">
+													<th style="width: 251px;" class="sorting_asc" role="columnheader" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                              Month
+                            : activate to sort column descending">
+														序号
+													</th>
+													<th style="width: 298px;" class="sorting" role="columnheader" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="
+                              Internet Explorer
+                            : activate to sort column ascending">
+														款号
+													</th>
+													<th style="width: 235px;" class="sorting" role="columnheader" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="
+                              Firefox
+                            : activate to sort column ascending">
+														创建时间
+													</th>
+													
+												</tr>
+											</thead>
+
+											<tbody role="alert" aria-live="polite" aria-relevant="all">
+												<tr class="gradeU info odd">
+													<td class="  sorting_1">
+														May
+													</td>
+													<td class=" ">
+														32.2 %
+													</td>
+													<td class=" ">
+														46.9 %
+													</td>
+													
+												</tr>
+												<tr class="gradeC even">
+													<td class="  sorting_1">
+														November
+													</td>
+													<td class=" ">
+														15.1 %
+													</td>
+													<td class=" ">
+														31.2 %
+													</td>
+												</tr>
+												
+												
+												<tr class="gradeU info even">
+													<td class="  sorting_1">
+														November
+													</td>
+													<td class=" ">
+														28.6 %
+													</td>
+													<td class=" ">
+														44.0 %
+													</td>
+													
+												</tr>
+												<tr class="gradeU info even">
+													<td class="  sorting_1">
+														November
+													</td>
+													<td class=" ">
+														28.6 %
+													</td>
+													<td class=" ">
+														44.0 %
+													</td>
+													
+												</tr>
+												<tr class="gradeA success odd">
+													<td class="  sorting_1">
+														October
+													</td>
+													<td class=" ">
+														16.1 %
+													</td>
+													<td class=" ">
+														31.8 %
+													</td>
+													
+												</tr>
+												<tr class="gradeA warning even">
+													<td class="  sorting_1">
+														October
+													</td>
+													<td class=" ">
+														21.7 %
+													</td>
+													<td class=" ">
+														38.7 %
+													</td>
+													
+												</tr>
+												
+												<tr class="gradeA info odd">
+													<td class="  sorting_1">
+														September
+													</td>
+													<td class=" ">
+														22.9 %
+													</td>
+													<td class=" ">
+														39.7 %
+													</td>
+													
+												</tr>
+												
+												<tr class="gradeX warning even">
+													<td class="  sorting_1">
+														September
+													</td>
+													<td class=" ">
+														31.1 %
+													</td>
+													<td class=" ">
+														45.1 %
+													</td>
+													
+												</tr>
+												
+												
+											</tbody>
+										</table>
+										</div>
+										<div class="dataTables_paginate paging_full_numbers" id="data-table_paginate" style="margin-top: -5px;">
+											<a tabindex="0" class="first paginate_button" id="data-table_first">First</a>
+											<a tabindex="0" class="previous paginate_button" id="data-table_previous">Previous</a><span><a tabindex="0" class="paginate_button">1</a><a tabindex="0" class="paginate_button">2</a><a tabindex="0" class="paginate_button">3</a><a tabindex="0" class="paginate_active">4</a></span>
+											<a tabindex="0" class="next paginate_button paginate_button_disabled" id="data-table_next">Next</a>
+											<a tabindex="0" class="last paginate_button paginate_button_disabled" id="data-table_last">Last</a>
+										</div>
+									</div>
+									<div class="clearfix">
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+
+					<div class="span7" style="margin: 0;">
+						<div class="widget no-margin">
+							<div class="widget-header">
+								<div class="title">
+									款号工序
+								</div>
+
+							</div>
+							<div class="widget-body" id="style-detail">
+								<div class="navbar-inner" style="margin-bottom: 5px;">
+									<form class="navbar-form">
+										<div class="input-append">
+											<div class="span2" style="float: left;">
+												<label style="margin-top: 5px;float: left;">新的款号:</label>
+												<input style="width:60%;" type="text">
+											</div>
+
+											<div class="span2" style="float: left;">
+												<label style="margin-top: 5px;float: left;">裁片部位:</label>
+												<input style="width:60%;" type="text">
+											</div>
+
+											<div class="span2" style="float: left;">
+												<label style="margin-top: 5px;float: left;">输入工序数:</label>
+												<input style="width:60%;" type="text">
+											</div>
+
+											<div style="float: right;">
+												<button class="btn" type="button">
+					                             	 插入工序
+					                            </button>
+												<button class="btn" type="button">
+					                            	复制工序
+					                            </button>
+												<button class="btn" type="button">
+					                              	限额工序
+					                            </button>
+												<button class="btn btn-info" type="submit">
+					                              excel导入
+					                            </button>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div style="height: 80%;overflow: auto;">
+								<table class="table table-bordered no-margin" cellpadding="0" cellspacing="0">
+									<thead>
+										<tr>
+											<th>
+												2012
+											</th>
+											<th>
+												Explorer
+											</th>
+											<th class="hidden-phone">
+												Firefox
+											</th>
+											<th class="hidden-phone">
+												Chrome
+											</th>
+											<th class="hidden-phone">
+												Safari
+											</th>
+											<th class="hidden-phone">
+												Opera
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="success">
+											<td>
+												Dec
+											</td>
+											<td>
+												15.4%
+											</td>
+											<td class="hidden-phone">
+												34.4%
+											</td>
+											<td class="hidden-phone">
+												41.7%
+											</td>
+											<td class="hidden-phone">
+												4.1%
+											</td>
+											<td class="hidden-phone">
+												2.0%
+											</td>
+										</tr>
+										
+										<tr class="success">
+											<td>
+												Aug
+											</td>
+											<td>
+												16.2%
+											</td>
+											<td class="hidden-phone">
+												32.8%
+											</td>
+											<td class="hidden-phone">
+												43.7%
+											</td>
+											<td class="hidden-phone">
+												4.0%
+											</td>
+											<td class="hidden-phone">
+												2.3%
+											</td>
+										</tr>
+										<tr class="success">
+											<td>
+												Aug
+											</td>
+											<td style="width: 15%;overflow: hidden;">
+											<input type="text" style="margin:0;width: 90%;"></input>
+											</td>
+											<td class="hidden-phone">
+												32.8%
+											</td>
+											<td class="hidden-phone">
+												43.7%
+											</td>
+											<td class="hidden-phone">
+												4.0%
+											</td>
+											<td class="hidden-phone">
+												2.3%
+											</td>
+										</tr>
+										<tr class="success">
+											<td>
+												Aug
+											</td>
+											<td>
+												16.2%
+											</td>
+											<td class="hidden-phone">
+												32.8%
+											</td>
+											<td class="hidden-phone">
+												43.7%
+											</td>
+											<td class="hidden-phone">
+												4.0%
+											</td>
+											<td class="hidden-phone">
+												2.3%
+											</td>
+										</tr>
+										<tr class="success">
+											<td>
+												Aug
+											</td>
+											<td>
+												16.2%
+											</td>
+											<td class="hidden-phone">
+												32.8%
+											</td>
+											<td class="hidden-phone">
+												43.7%
+											</td>
+											<td class="hidden-phone">
+												4.0%
+											</td>
+											<td class="hidden-phone">
+												2.3%
+											</td>
+										</tr>
+										<tr class="success">
+											<td>
+												Aug
+											</td>
+											<td>
+												16.2%
+											</td>
+											<td class="hidden-phone">
+												32.8%
+											</td>
+											<td class="hidden-phone">
+												43.7%
+											</td>
+											<td class="hidden-phone">
+												4.0%
+											</td>
+											<td class="hidden-phone">
+												2.3%
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								</div>
+								<table class="table table-bordered no-margin">
+									<thead>
+										<tr>
+											<th>
+												2012
+											</th>
+											<th>
+												Explorer
+											</th>
+											<th class="hidden-phone">
+												Firefox
+											</th>
+											<th class="hidden-phone">
+												Chrome
+											</th>
+											<th class="hidden-phone">
+												Safari
+											</th>
+											<th class="hidden-phone">
+												Opera
+											</th>
+										</tr>
+									</thead>
+								</table>
+							
+							</div>
+						</div>
+					</div>
+
+					<div class="span2" style="margin: 0;width:19%;">
+
+						<div class="wrapper">
+							<table class="table table-condensed table-striped table-bordered table-hover no-margin">
+								<thead>
+									<tr>
+										<th style="width:10%">
+											<input type="checkbox" class="no-margin">
+										</th>
+										<th style="width:70%">
+											Name
+										</th>
+										<th style="width:20%">
+											Status
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<input type="checkbox" class="no-margin">
+										</td>
+										<td>
+											<span class="name">
+                        Mahendra Singh Dhoni
+                      </span>
+										</td>
+										<td>
+											<span class="label label label-info">
+                        New
+                      </span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" class="no-margin">
+										</td>
+										<td>
+											<span class="name">
+                        Michel Clark
+                      </span>
+										</td>
+										<td>
+											<span class="label label label-success">
+                        New
+                      </span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" class="no-margin">
+										</td>
+										<td>
+											<span class="name">
+                        Rahul Dravid
+                      </span>
+										</td>
+										<td>
+											<span class="label label label-important">
+                        New
+                      </span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" class="no-margin">
+										</td>
+										<td>
+											<span class="name">
+                        Anthony Michell
+                      </span>
+										</td>
+										<td>
+											<span class="label label label-info">
+                        New
+                      </span>
+										</td>
+
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" class="no-margin">
+										</td>
+										<td>
+											<span class="name">
+                        Srinu Baswa
+                      </span>
+										</td>
+										<td>
+											<span class="label label label-success">
+                        New
+                      </span>
+										</td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+				<div class="form-actions no-margin">
+					<button type="submit" class="btn btn-info pull-right" style="margin-right: 6px;">
+                         	打 印 
+                        </button>
+					<button type="submit" class="btn btn-info pull-right" style="margin-right: 6px;">
+                         	保 存<span class="fs1" aria-hidden="true" data-icon="&#xe060;"></span>
+                        </button>
+					<div class="clearfix">
+					</div>
+				</div>
+			</div>
+
+		</div>
+		</div>
+
+	</body>
+
+</html>
